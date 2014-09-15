@@ -45,6 +45,7 @@ HOSTNAME=$(hostname)
 export ROS_MASTER_URI=http://${ROS_MASTER}:11311
 export ROS_HOSTNAME=${HOSTNAME}
 
+HOSTNAME=$(echo "$HOSTNAME" | sed 's/-/_/g')
 NAME=system_monitors
 PIDFILE=$HOME/.ros/$NAME.pid
 DAEMON=/opt/ros/$ROS_DISTRIBUTION/bin/roslaunch
