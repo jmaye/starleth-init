@@ -1,5 +1,5 @@
 # ROS distribution
 # Use the specified ROS distribution, with files commonly installed under
 # /opt/ros/$ROS_DISTRIBUTION
-ROS_DISTRIBUTION=${ROS_DISTRIBUTION}
+ROS_DISTRIBUTION=indigo
 ROS_MASTER=starleth-hlpc
