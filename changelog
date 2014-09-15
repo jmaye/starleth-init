@@ -1,3 +1,9 @@
+starleth-init (0.1-8) precise; urgency=low
+
+  * small bug 
+
+ -- Jerome Maye <jerome.maye@mavt.ethz.ch>  Mon, 15 Sep 2014 18:41:47 +0200
+
 starleth-init (0.1-7) precise; urgency=low
 
   * fixing ROS distribution 

@@ -41,13 +41,14 @@ SETUP=/opt/ros/$ROS_DISTRIBUTION/setup.sh
 [ "$RUN" = "yes" ] || exit 0
 
 # ROS environment variables for distributed systems
+HOSTNAME=$(hostname)
 export ROS_MASTER_URI=http://${ROS_MASTER}:11311
-export ROS_HOSTNAME=$(hostname)
+export ROS_HOSTNAME=${HOSTNAME}
 
 NAME=system_monitors
 PIDFILE=$HOME/.ros/$NAME.pid
 DAEMON=/opt/ros/$ROS_DISTRIBUTION/bin/roslaunch
-DAEMON_ARGS="--pid=$PIDFILE --wait starleth_system_monitor system_monitor.launch machine_name:=$(hostname)"
+DAEMON_ARGS="--pid=$PIDFILE --wait starleth_system_monitor system_monitor.launch machine_name:=$HOSTNAME"
 
 # Exit if daemon is not installed
 [ -x "$DAEMON" ] || exit 0

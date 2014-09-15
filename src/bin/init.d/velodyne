@@ -41,8 +41,9 @@ SETUP=/opt/ros/$ROS_DISTRIBUTION/setup.sh
 [ "$RUN" = "yes" ] || exit 0
 
 # ROS environment variables for distributed systems
+HOSTNAME=$(hostname)
 export ROS_MASTER_URI=http://${ROS_MASTER}:11311
-export ROS_HOSTNAME=$(hostname)
+export ROS_HOSTNAME=${HOSTNAME}
 
 NAME=velodyne
 PIDFILE=$HOME/.ros/$NAME.pid
