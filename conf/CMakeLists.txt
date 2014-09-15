@@ -1,1 +1,1 @@
-remake_add_configurations(*.remake INSTALL default)
+remake_add_configurations(INSTALL default)

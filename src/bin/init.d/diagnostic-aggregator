@@ -36,29 +36,13 @@ SETUP=/opt/ros/$ROS_DISTRIBUTION/setup.sh
 # Read configuration variable file for runtime variables if it is present
 [ -r /etc/starleth/default/diagnostic-aggregator ] && \
   . /etc/starleth/default/diagnostic-aggregator
-[ -r /etc/starleth/default/roscore ] && \
-  . /etc/starleth/default/roscore
 
-# Case distinction where to run diagnostic-aggregator
-HOSTNAME=$(hostname)
-
-MACHINE_RUN=false
-for MACHINE in ${MACHINES}; do
-  if [ "${MACHINE}" = "${HOSTNAME}" ]
-  then
-    MACHINE_RUN=true
-    break
-  fi
-done
-
-if [ ${MACHINE_RUN} = false ]
-then
-  exit 0
-fi
+# Exit if daemon shall not run at boot time
+[ "$RUN" = "yes" ] || exit 0
 
 # ROS environment variables for distributed systems
 export ROS_MASTER_URI=http://${ROS_MASTER}:11311
-export ROS_HOSTNAME=${HOSTNAME}
+export ROS_HOSTNAME=$(hostname)
 
 NAME=diagnostic_aggregator
 PIDFILE=$HOME/.ros/$NAME.pid

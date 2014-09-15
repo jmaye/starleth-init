@@ -37,17 +37,12 @@ SETUP=/opt/ros/$ROS_DISTRIBUTION/setup.sh
 [ -r /etc/starleth/default/roscore ] && \
   . /etc/starleth/default/roscore
 
-# Case distinction where to run roscore
-HOSTNAME=$(hostname)
-
-if [ "${HOSTNAME}" != "${ROS_MASTER}" ]
-then
-  exit 0
-fi
+# Exit if daemon shall not run at boot time
+[ "$RUN" = "yes" ] || exit 0
 
 # ROS environment variables for distributed systems
 export ROS_MASTER_URI=http://${ROS_MASTER}:11311
-export ROS_HOSTNAME=${HOSTNAME}
+export ROS_HOSTNAME=$(hostname)
 
 NAME=roscore
 PORT=11311

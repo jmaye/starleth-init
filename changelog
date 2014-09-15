@@ -1,3 +1,9 @@
+starleth-init (0.1-5) precise; urgency=low
+
+  * updating inits 
+
+ -- Jerome Maye <jerome.maye@mavt.ethz.ch>  Mon, 15 Sep 2014 15:44:10 +0200
+
 starleth-init (0.1-4) trusty; urgency=low
 
   * adding gitignore 

@@ -36,34 +36,18 @@ SETUP=/opt/ros/$ROS_DISTRIBUTION/setup.sh
 # Read configuration variable file for runtime variables if it is present
 [ -r /etc/starleth/default/system-monitors ] && \
   . /etc/starleth/default/system-monitors
-[ -r /etc/starleth/default/roscore ] && \
-  . /etc/starleth/default/roscore
 
-# Case distinction where to run system-monitor
-HOSTNAME=$(hostname)
-
-MACHINE_RUN=false
-for MACHINE in ${MACHINES}; do
-  if [ "${MACHINE}" = "${HOSTNAME}" ]
-  then
-    MACHINE_RUN=true
-    break
-  fi
-done
-
-if [ ${MACHINE_RUN} = false ]
-then
-  exit 0
-fi
+# Exit if daemon shall not run at boot time
+[ "$RUN" = "yes" ] || exit 0
 
 # ROS environment variables for distributed systems
 export ROS_MASTER_URI=http://${ROS_MASTER}:11311
-export ROS_HOSTNAME=${HOSTNAME}
+export ROS_HOSTNAME=$(hostname)
 
 NAME=system_monitors
 PIDFILE=$HOME/.ros/$NAME.pid
 DAEMON=/opt/ros/$ROS_DISTRIBUTION/bin/roslaunch
-DAEMON_ARGS="--pid=$PIDFILE --wait starleth_system_monitor system_monitor.launch machine_name:=$HOSTNAME"
+DAEMON_ARGS="--pid=$PIDFILE --wait starleth_system_monitor system_monitor.launch machine_name:=$(hostname)"
 
 # Exit if daemon is not installed
 [ -x "$DAEMON" ] || exit 0
