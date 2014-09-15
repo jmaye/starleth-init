@@ -46,8 +46,8 @@ then
 fi
 
 # ROS environment variables for distributed systems
-export ROS_MASTER_URI=http://${ROS_MASTER}.${DOMAIN_NAME}:11311
-export ROS_HOSTNAME=${HOSTNAME}.${DOMAIN_NAME}
+export ROS_MASTER_URI=http://${ROS_MASTER}:11311
+export ROS_HOSTNAME=${HOSTNAME}
 
 NAME=roscore
 PORT=11311
