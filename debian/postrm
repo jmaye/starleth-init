@@ -1,0 +1,12 @@
+#!/bin/sh -e
+# postrm for starleth-init
+
+if [ "$1" = "purge" ] ; then
+  update-rc.d starleth-roscore remove > /dev/null
+  update-rc.d starleth-system-monitors remove > /dev/null
+  update-rc.d starleth-diagnostic-aggregator remove > /dev/null
+  update-rc.d starleth-velodyne remove > /dev/null
+  update-rc.d starleth-velodyne-post remove > /dev/null
+fi
+
+exit 0
