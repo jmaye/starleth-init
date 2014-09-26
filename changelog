@@ -1,3 +1,9 @@
+starleth-init (0.1-11) trusty; urgency=medium
+
+  * missing files 
+
+ -- Jerome Maye <jerome.maye@mavt.ethz.ch>  Fri, 26 Sep 2014 19:55:45 +0200
+
 starleth-init (0.1-10) trusty; urgency=medium
 
   * adding xsens 
