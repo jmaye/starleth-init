@@ -3,4 +3,4 @@
 # service for changed parameters to take effect.
 
 # Set RUN=yes to start the system monitors at boot time.
-RUN=yes
+RUN=no

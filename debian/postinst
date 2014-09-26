@@ -53,4 +53,13 @@ if [ -x /etc/init.d/starleth-velodyne-post ]; then
   fi
 fi
 
+if [ -x /etc/init.d/starleth-xsensmt ]; then
+  update-rc.d starleth-xsensmt start 99 2 3 4 5 . stop 1 0 1 6 . >/dev/null
+  if [ -x /usr/sbin/invoke-rc.d ]; then
+    invoke-rc.d starleth-xsensmt restart
+  else
+    /etc/init.d/starleth-xsensmt restart
+  fi
+fi
+
 exit 0

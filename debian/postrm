@@ -7,6 +7,7 @@ if [ "$1" = "purge" ] ; then
   update-rc.d starleth-diagnostic-aggregator remove > /dev/null
   update-rc.d starleth-velodyne remove > /dev/null
   update-rc.d starleth-velodyne-post remove > /dev/null
+  update-rc.d starleth-xsensmt remove > /dev/null
 fi
 
 exit 0

@@ -42,6 +42,14 @@ case "$1" in
         /etc/init.d/starleth-velodyne-post stop
       fi
     fi
+
+    if [ -x /etc/init.d/starleth-xsensmt ]; then
+      if [ -x /usr/sbin/invoke-rc.d ]; then
+        invoke-rc.d starleth-xsensmt stop
+      else
+        /etc/init.d/starleth-xsensmt stop
+      fi
+    fi
     ;;
   upgrade)
     ;;
